@@ -3,10 +3,10 @@ import{ref, inject, onMounted, onBeforeUnmount } from "vue"
 import eventBus from "../../services/eventBus"
 import todoService from "../../services/todo"
 const _projects = ref([])
-updateProjects()
+updateProjects();
 onMounted(() => {
   // Register events
-  eventBus.on("UpdateProjects", updateProjects)
+  eventBus.on("#UpdateProjects", updateProjects)
 })
 onBeforeUnmount(() => {
   // De-register events (Clean after yourself!)
