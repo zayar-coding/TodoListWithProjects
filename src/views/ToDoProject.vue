@@ -3,10 +3,10 @@ import { ref, inject, onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 import TodoItemForm from "../components/ToDos/ToDoItemForm.vue";
 import TodoFilter from "../components/ToDos/ToDoFilter.vue";
+import ToDoList from "../components/ToDos/ToDoList.vue";
+import ToDoSummery from "../components/ToDos/ToDoSummery.vue";
 import todoService from "../services/todo";
 import eventBus from "../services/eventBus";
-import Todolist from "../components/todos/todolist.vue";
-import ToDoSummery from "../components/todos/ToDoSummery.vue";
 const $props = defineProps(["id"]),
   $modals = inject("$modals"),
   $router = useRouter(),
@@ -116,7 +116,7 @@ function saveProject() {
       <TodoFilter v-model="_filter" class="flex-grow"></TodoFilter>
     </div>
     <!-- Todo list -->
-    <Todolist
+    <ToDoList
       v-model="_items"
       :filter="_filter"
       @toggle="toggleStatus"
@@ -130,7 +130,7 @@ function saveProject() {
        <i class='bx bx-plus-circle'></i>
         New item
       </button>
-    </Todolist>
+    </ToDoList>
     <!-- Modals -->
     <Modal name="newEditItem" title="To Do Item">
       <TodoItemForm v-model="_item"></TodoItemForm>
